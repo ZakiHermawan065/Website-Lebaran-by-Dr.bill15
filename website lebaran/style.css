@@ -111,3 +111,34 @@ h1 {
         font-size: 1.6rem;
     }
 }
+
+/* Tombol Musik Melayang */
+.music-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    border: 3px solid #d4af37;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 1000; /* Agar selalu di atas elemen lain */
+    transition: all 0.3s ease;
+}
+
+/* Animasi berputar saat lagu menyala */
+.music-btn.playing {
+    animation: spin 5s linear infinite;
+    background-color: #d4af37;
+    border-color: #fff;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
