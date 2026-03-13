@@ -32,4 +32,26 @@
         </div>
     </div>
 </body>
+
+<script>
+        // 1. Ambil waktu saat ini dari perangkat pengguna
+        const now = new Date();
+        
+        // 2. Tentukan tanggal mulai dan akhir (Format: Tahun, Bulan [0-11], Tanggal)
+        // Bulan 2 = Maret
+        const startDate = new Date(2026, 2, 20, 0, 0, 0); // 20 Maret 2026 jam 00:00
+        const endDate = new Date(2026, 2, 22, 23, 59, 59); // 22 Maret 2026 jam 23:59
+
+        // 3. Cek logika: Jika SEKARANG sebelum MULAI atau setelah AKHIR
+        if (now < startDate || now > endDate) {
+            // Ganti isi container dengan pesan belum lebaran
+            document.querySelector('.container').innerHTML = `
+                <div class="card">
+                    <div style="font-size: 50px; margin-bottom: 20px;">✋</div>
+                    <h1>Belum Lebaran mas 😇</h1>
+                    <p class="message">Jangan mokel dulu</p>
+                </div>
+            `;
+        }
+    </script>
 </html>
