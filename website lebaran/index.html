@@ -31,20 +31,28 @@
             </div>
         </div>
     </div>
+    <!-- Audio Elements -->
+    <audio id="bg-music" loop>
+        <source src="lebaran.mp3" type="audio/mp3">
+    </audio>
+    <!-- Music Control Buttons -->
+    <button id="music-btn" class="music-btn" onclick="toggleMusic()">
+        🔇
+    </button>
 </body>
 
 <script>
-        // 1. Ambil waktu saat ini dari perangkat pengguna
+        // 1. Get the current time from the user's device
         const now = new Date();
         
-        // 2. Tentukan tanggal mulai dan akhir (Format: Tahun, Bulan [0-11], Tanggal)
-        // Bulan 2 = Maret
+        // 2. Specify start and end date (Format: Year, Month [0-11], Date)
+        // Month 2 = "Maret"
         const startDate = new Date(2026, 2, 20, 0, 0, 0); // 20 Maret 2026 jam 00:00
         const endDate = new Date(2026, 2, 22, 23, 59, 59); // 22 Maret 2026 jam 23:59
 
-        // 3. Cek logika: Jika SEKARANG sebelum MULAI atau setelah AKHIR
+        // 3. Logic check
         if (now < startDate || now > endDate) {
-            // Ganti isi container dengan pesan belum lebaran
+            // Replace the container contents with a message that is not Eid yet
             document.querySelector('.container').innerHTML = `
                 <div class="card">
                     <div style="font-size: 50px; margin-bottom: 20px;">✋</div>
@@ -53,5 +61,30 @@
                 </div>
             `;
         }
+        // --- MUSIC LOGIC ---
+        const music = document.getElementById('bg-music');
+        const btn = document.getElementById('music-btn');
+        music.volume = 0.4;
+        let isPlaying = false;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+                btn.innerHTML = '🔇'; // Ikon Muted
+                btn.classList.remove('playing');
+            } else {
+                music.play();
+                btn.innerHTML = '🎵'; // Ikon Nada
+                btn.classList.add('playing');
+            }
+            isPlaying = !isPlaying;
+        }
+        // Default Music Off, activate on first click anywhere
+        document.body.addEventListener('click', function() {
+            if (!isPlaying) {
+                toggleMusic();
+            }
+        }, { once: true }); // Only trigger once to prevent multiple toggles
     </script>
 </html>
+
