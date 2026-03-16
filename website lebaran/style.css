@@ -92,14 +92,14 @@ h1 {
     margin-top: 5px;
 }
 
-/* Animasi mengambang untuk ikon bulan */
+/* Hover Moon Icon Animation */
 @keyframes float {
     0% { transform: translateY(0px); }
     50% { transform: translateY(-10px); }
     100% { transform: translateY(0px); }
 }
 
-/* Responsif untuk Handphone (Layar kecil) */
+/* Handphone Responsive (Small Screen) */
 @media (max-width: 480px) {
     .card {
         padding: 30px 20px;
@@ -110,9 +110,49 @@ h1 {
     .arabic {
         font-size: 1.6rem;
     }
+    #countdown {
+        gap: 10px;
+    }
+    .time-box {
+        min-width: 60px;
+        padding: 8px;
+    }
+    .time-box span {
+        font-size: 1.5rem;
+    }
 }
 
-/* Tombol Musik Melayang */
+/* Countdown Digital Style */
+#countdown {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Jarak antar kotak */
+    margin-top: 25px;
+}
+.time-box {
+    background-color: #005842;
+    color: #000000;
+    padding: 10px;
+    border-radius: 10px;
+    min-width: 70px; /* Lebar minimum kotak */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid #d4af37;
+}
+.time-box span {
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.1;
+}
+.time-box small {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    margin-top: 5px;
+    color: #d4af37;
+}
+
+/* Hover effect for music button */
 .music-btn {
     position: fixed;
     bottom: 20px;
@@ -132,7 +172,7 @@ h1 {
     transition: all 0.3s ease;
 }
 
-/* Animasi berputar saat lagu menyala */
+/* Music animation when playing */
 .music-btn.playing {
     animation: spin 5s linear infinite;
     background-color: #d4af37;
